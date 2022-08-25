@@ -4,7 +4,7 @@ import { useDispatch} from 'react-redux'
 
 //lo publicaron aqui
 //https://codesandbox.io/s/react-redux-fetch-data-from-api-c5ml1?file=/src/components/cartList.js:1064-1068
-import { add, subtract, removeItemFromCart } from "../actions/action";
+import { add, subtract, removeItemFromCart } from "../store/actions/action";
 
 export function CartList (props) {
 

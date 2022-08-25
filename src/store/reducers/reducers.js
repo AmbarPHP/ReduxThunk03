@@ -9,6 +9,8 @@ let initialState = {
   // TENEMOS LOS REDUCERS , CON ESTAO Y ACTION
   //1) le pasamos el estado inicial
   //si no coincide con ningun caso retornamos el estado
+  //Pure function , always return the same , whitout side efects
+  
   function reducer(state = initialState, action) {
     var foundIndex = 0;
     var foundIndexCart = 0;

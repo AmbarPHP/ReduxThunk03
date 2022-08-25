@@ -2,10 +2,11 @@ import React from "react";
 import { connect } from "react-redux";
 import { useDispatch} from 'react-redux'
 
-import { addToCart, add, subtract } from "../actions/action";
+import { addToCart, add, subtract } from "../store/actions/action";
 
 //aqui tenemos los dispatch
 export function ItemList(props)  {
+
 const dispatch = useDispatch();
 
   function faddToCart (e, itemname) {

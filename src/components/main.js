@@ -8,7 +8,8 @@ import ItemList from "./itemList.js";
 import CartList from "./cartList.js";
 import Total from "./total.js";
 
-import { fetchProducts } from "../actions/fetchData";
+import { fetchProducts } from "../store/actions/fetchData";
+import store from "../store/store.js";
 
 export function Main () {
 const dispatch = useDispatch();
@@ -16,6 +17,8 @@ const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchProducts())
   }, [dispatch])
+
+  console.log(store.getState());
 
   
     return (

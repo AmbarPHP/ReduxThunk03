@@ -4,7 +4,7 @@ import ReactDOM from "react-dom";
 import Main from "./components/main.js";
 import { Provider } from "react-redux";
 //IMPORTAMOS LA STORE
-import store from "./store";
+import store from "./store/store";
 
 
 function App() {
