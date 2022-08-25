@@ -1,54 +1,59 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
+import { useDispatch} from 'react-redux'
 
-//actions 
+//lo publicaron aqui
+//https://codesandbox.io/s/react-redux-fetch-data-from-api-c5ml1?file=/src/components/cartList.js:1064-1068
 import { add, subtract, removeItemFromCart } from "../actions/action";
 
-class CartList extends Component {
-  add = (e, itemname) => {
-    this.props.dispatch(add(itemname));
+export function CartList (props) {
+
+  const dispatch = useDispatch();
+
+  const fadd = (e, itemname) => {
+    dispatch(add(itemname));
   };
 
-  subtract = (e, itemname) => {
-    this.props.dispatch(subtract(itemname));
+  const fsubtract = (e, itemname) => {
+    dispatch(subtract(itemname));
   };
 
-  removeItemFromCart = (e, itemname, amount) => {
+  const fremoveItemFromCart = (e, itemname, amount) => {
     console.log("amount", amount);
-    this.props.dispatch(removeItemFromCart(itemname, amount));
+    dispatch(removeItemFromCart(itemname, amount));
   };
 
-  render() {
-    const { cart } = this.props;
-    const cartList = cart.map((i, j) => {
-      return (
-        <div className="col-xs-4 col-md-3" data-cart-product key={j}>
-          <div className="thumbnail">
-            <div className="caption">
-              <h3>{i.itemname}</h3>
-              <p>
-                {i.price}*{i.cartCount}={i.price * i.cartCount}
-              </p>
-              <div className="number">
-                <button onClick={e => this.subtract(e, i.itemname)}>-</button>
-                <button>{i.cartCount}</button>
-                <button onClick={e => this.add(e, i.itemname)}>+</button>
-                <br />
-                <button
-                  onClick={e =>
-                    this.removeItemFromCart(e, i.itemname, i.price * i.cartCount)
-                  }
-                >
-                  Remove
-                </button>
-              </div>
+  let cartList=[];
+
+  cartList = props.cart.map((i, j) => {
+    return (
+      <div className="col-xs-4 col-md-3" data-cart-product key={j}>
+        <div className="thumbnail">
+          <div className="caption">
+            <h3>{i.itemname}</h3>
+            <p>
+              {i.price}*{i.cartCount}={i.price * i.cartCount}
+            </p>
+            <div className="number">
+              <button onClick={e => fsubtract(e, i.itemname)}>-</button>
+              <button>{i.cartCount}</button>
+              <button onClick={e => fadd(e, i.itemname)}>+</button>
+              <br />
+              <button
+                onClick={e =>
+                  fremoveItemFromCart(e, i.itemname, i.price * i.cartCount)
+                }
+              >
+                Remove
+              </button>
             </div>
           </div>
         </div>
-      );
-    });
-    return <div>{cartList}</div>;
-  }
+      </div>
+    );
+  })
+  return <div>{cartList}</div>;
+  
 }
 
 const mapStateToProps = state => ({

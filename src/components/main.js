@@ -1,5 +1,6 @@
-import React, { Component } from "react";
-
+import React from "react";
+import { useEffect } from "react";
+import { useDispatch} from 'react-redux'
 import { connect } from "react-redux";
 // import { bindActionCreators } from "redux";
 
@@ -9,12 +10,14 @@ import Total from "./total.js";
 
 import { fetchProducts } from "../actions/fetchData";
 
-class Main extends Component {
-  componentDidMount() {
-    this.props.dispatch(fetchProducts());
-  }
+export function Main () {
+const dispatch = useDispatch();
 
-  render() {
+  useEffect(() => {
+    dispatch(fetchProducts())
+  }, [dispatch])
+
+  
     return (
       <div>
         <ItemList />
@@ -23,9 +26,9 @@ class Main extends Component {
         <hr />
         <Total />
       </div>
-    );
+    )
   }
-}
+
 
 const mapStateToProps = state => ({
   item: state.products.item,

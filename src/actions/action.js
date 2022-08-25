@@ -8,6 +8,14 @@ import {
     REMOVE_ITEM_FROM_CART
   } from "./actionType";
   
+
+  export function fetchDataError(error) {
+    return {
+      type: FETCH_DATA_ERROR,
+      payload: { error }
+    };
+  }
+  
   export function fetchDataRequest() {
     return {
       type: FETCH_DATA_REQUEST
@@ -21,12 +29,7 @@ import {
     };
   }
   
-  export function fetchDataError(error) {
-    return {
-      type: FETCH_DATA_ERROR,
-      payload: { error }
-    };
-  }
+ 
   
   export function addToCart(itemname) {
     return {
