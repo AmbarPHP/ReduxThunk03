@@ -1,11 +1,11 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
 
-class Total extends Component {
-  render() {
-    const { total } = this.props;
-    return <div>Total: {total}</div>;
-  }
+export function Total (props) {
+  return(
+    
+    <div>Total: {props.total}</div>
+  );
 }
 
 const mapStateToProps = state => ({

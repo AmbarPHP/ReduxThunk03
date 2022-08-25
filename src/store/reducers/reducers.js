@@ -6,10 +6,16 @@ let initialState = {
     error: null
   };
   
+  // TENEMOS LOS REDUCERS , CON ESTAO Y ACTION
+  //1) le pasamos el estado inicial
+  //si no coincide con ningun caso retornamos el estado
+  //Pure function , always return the same , whitout side efects
+  
   function reducer(state = initialState, action) {
     var foundIndex = 0;
     var foundIndexCart = 0;
     var { item, cart, total } = state;
+
     switch (action.type) {
       case "FETCH_DATA_REQUEST":
         return {
